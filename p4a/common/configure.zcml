@@ -1,4 +1,10 @@
 <configure
-    xmlns="http://namespaces.zope.org/zope">
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser">
+
+  <browser:menu
+      id="object_buttons"
+      title="Plone Content Drop-Down Menu"
+      />
 
 </configure>
