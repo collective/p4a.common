@@ -28,10 +28,10 @@ def _set_activation(obj, possibleiface, enhancediface, activation):
                                   'implementer'
                                   % (repr(possibleiface), repr(obj)))
 
+    ifaces = interface.directlyProvidedBy(obj)
     if activation and not enhancediface.providedBy(obj):
         interface.alsoProvides(obj, enhancediface)
-    elif not activation and enhancediface.directlyProvidedBy(obj):
-        ifaces = interface.directlyProvidedBy(obj)
+    elif not activation and enhancediface in ifaces:
         interface.directlyProvides(obj, ifaces - enhancediface)
 
 def activate(obj, possibleiface, enhancediface):
@@ -69,4 +69,4 @@ class FeatureProperty(object):
         if value:
             activate(obj, self.__possibleiface, self.__enhancediface)
         else:
-            deativate(obj, self.__possibleiface, self.__enhancediface)
+            deactivate(obj, self.__possibleiface, self.__enhancediface)
