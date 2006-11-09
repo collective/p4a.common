@@ -1,4 +1,53 @@
+from datetime import datetime
 
+def day_suffix(day):
+    """
+    Return correct English suffix (i.e. 'st', 'nd' etc.)
+    """
+    
+    if 4 <= day <= 20 or 24 <= day <= 30:
+        return 'th'
+    else:
+        return ["st", "nd", "rd"][day % 10 - 1]
+    
+def fancy_date_interval(start, end):
+    """
+    If dates share month and year, format it so the month
+    is only displayed once.
+
+    >>> from datetime import datetime
+    >>> fancy_date_interval(datetime(2006, 1, 29), datetime(2006, 1, 30))
+    'Jan 29th-30th, 2006'
+
+    >>> fancy_date_interval(datetime(2006, 1, 29), datetime(2006, 2, 1))
+    'Jan 29th-Feb 1st, 2006'
+
+    >>> fancy_date_interval(datetime(2006, 1, 29), datetime(2006, 1, 29))
+    'Jan 29th, 2006'
+
+    """
+    if (start.year == end.year) and (start.month == end.month) and (start.day == end.day):
+        return "%s %s%s, %s" % (start.strftime("%b"),
+                                     start.day,
+                                     day_suffix(start.day),
+                                     start.year)
+
+    elif (start.year == end.year) and (start.month == end.month):
+        return "%s %s%s-%s%s, %s" % (start.strftime("%b"),
+                                     start.day,
+                                     day_suffix(start.day),
+                                     end.day,
+                                     day_suffix(end.day),
+                                     start.year)
+    else:
+        return "%s %s%s-%s %s%s, %s" % (start.strftime("%b"),
+                                     start.day,
+                                     day_suffix(start.day),
+                                     end.strftime("%b"),
+                                     end.day,
+                                     day_suffix(end.day),
+                                     start.year)
+    
 def fancy_time_amount(v):
     """Produce a friendly representation of the given time amount.  The
     value is expected to be in seconds as an int.
@@ -26,7 +75,7 @@ def fancy_time_amount(v):
 
 def fancy_data_size(v):
     """Produce a friendly reprsentation of the given value.  The value
-    is expected to be in bytes as an int or long.
+    Is expected to be in bytes as an int or long.
     
       >>> fancy_data_size(54)
       u'54 B'
@@ -58,3 +107,10 @@ def fancy_data_size(v):
         v = v / 1024.0
 
     return format % (v, suffix)
+
+def _test():
+    import doctest
+    doctest.testmod()
+    
+if __name__ == "__main__":
+    _test()
