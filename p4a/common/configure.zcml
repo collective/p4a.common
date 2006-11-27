@@ -1,10 +1,20 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
-    xmlns:browser="http://namespaces.zope.org/browser">
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:five="http://namespaces.zope.org/five">
 
   <browser:menu
       id="object_buttons"
       title="Plone Content Drop-Down Menu"
       />
+
+  <configure package="Products.CMFPlone">
+    <class
+        class=".Portal.PloneSite">
+      <implements interface="zope.app.component.interfaces.IPossibleSite" />
+    </class>
+
+    <five:localsite class=".Portal.PloneSite" />
+  </configure>
 
 </configure>
