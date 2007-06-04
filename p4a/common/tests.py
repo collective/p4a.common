@@ -6,6 +6,8 @@ def test_suite():
         doctest.DocTestSuite('p4a.common.formatting'),
         doctest.DocTestSuite('p4a.common.site',
                              optionflags=doctest.ELLIPSIS),
+        doctest.DocTestSuite('p4a.common.descriptors',
+                             optionflags=doctest.ELLIPSIS),
         ))
 
 if __name__ == "__main__":
