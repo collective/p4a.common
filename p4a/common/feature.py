@@ -1,4 +1,6 @@
 from zope import interface
+from zope import event
+from p4a.common import interfaces
 
 _marker = object()
 
@@ -9,7 +11,7 @@ class ActivationException(Exception):
 def _set_activation(obj, possibleiface, enhancediface, activation):
     """Try to set the feature activation on the given object.
     """
-    
+
     if isinstance(possibleiface, basestring):
         raise NotImplementedError('Still need to locaate class via dotted '
                                   'path string')
@@ -31,8 +33,10 @@ def _set_activation(obj, possibleiface, enhancediface, activation):
     ifaces = interface.directlyProvidedBy(obj)
     if activation and not enhancediface.providedBy(obj):
         interface.alsoProvides(obj, enhancediface)
+        event.notify(interfaces.FeatureActivatedEvent(enhancediface, obj))
     elif not activation and enhancediface in ifaces:
         interface.directlyProvides(obj, ifaces - enhancediface)
+        event.notify(interfaces.FeatureDeactivatedEvent(enhancediface, obj))
 
 def activate(obj, possibleiface, enhancediface):
     _set_activation(obj, possibleiface, enhancediface, True)
