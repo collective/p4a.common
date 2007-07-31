@@ -5,7 +5,7 @@ from zope.app.component.interfaces import ISite
 class MockSite:
     """A simple ISite/ISiteManager combo for testing purposes.
     """
-    
+
     interface.implements(ISite, ISiteManager)
 
     def __init__(self):
