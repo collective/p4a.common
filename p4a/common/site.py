@@ -8,7 +8,7 @@ def ensure_site(context):
     this method is that it will ensure the given context is an ISite
     regardless of the Zope version (Zope 2.9 had a really hacked up
     SiteManager mechanism we have to account for).
-    
+
       >>> from zope.app.component.interfaces import ISite, IPossibleSite
       >>> from OFS.Folder import Folder
       >>> if not IPossibleSite.implementedBy(Folder):
@@ -18,16 +18,16 @@ def ensure_site(context):
       ...    classSiteHook(Folder, FiveSite)
       ...    interface.classImplements(Folder, IPossibleSite)
       >>> om = Folder('foo')
-      
+
       >>> ISite.providedBy(om)
       False
-      
+
       >>> ensure_site(om)
       >>> ISite.providedBy(om)
       True
-      
+
     """
-    
+
     if not IPossibleSite.providedBy(context):
         if hasattr(context, 'getPhysicalPath'):
             p = '/'.join(context.getPhysicalPath())
@@ -37,9 +37,9 @@ def ensure_site(context):
             p = id
         else:
             p = str(context)
-            
+
         raise TypeError('The object, "%s", is not an IPossibleSite' % p)
-    
+
     if not ISite.providedBy(context):
         enableLocalSiteHook(context)
         setSite(context)
