@@ -8,7 +8,9 @@ def test_suite():
                              optionflags=doctest.ELLIPSIS),
         doctest.DocTestSuite('p4a.common.site',
                              optionflags=doctest.ELLIPSIS),
-        doctest.DocTestSuite('p4a.common.descriptors',
+        doctest.DocTestSuite('p4a.common.descriptors._anno',
+                             optionflags=doctest.ELLIPSIS),
+        doctest.DocTestSuite('p4a.common.descriptors._at',
                              optionflags=doctest.ELLIPSIS),
         ))
 

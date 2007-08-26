@@ -2,11 +2,12 @@ from persistent.dict import PersistentDict
 try:
     from zope.annotation import interfaces as annointerfaces
 except ImportError, e:
+    # zope 2.9/3.2 support
     from zope.app.annotation import interfaces as annointerfaces
 
 _marker = object()
 
-class _AnnotationDescriptor(property):
+class AnnotationDescriptor(property):
     """A descriptor for accessing annotated fields.
 
       >>> import zope.interface
@@ -15,7 +16,7 @@ class _AnnotationDescriptor(property):
       ...     field1 = zope.schema.Text(title=u'Field1')
       >>> class Foo(dict):
       ...     zope.interface.implements(IFoo, annointerfaces.IAnnotations)
-      ...     field1 = _AnnotationDescriptor('key', IFoo['field1'])
+      ...     field1 = AnnotationDescriptor('key', IFoo['field1'])
 
       >>> foo = Foo()
       >>> foo.field1
@@ -78,5 +79,3 @@ class _AnnotationDescriptor(property):
             del d[name]
         except KeyError, e:
             raise AttributeError(str(e))
-
-anno = _AnnotationDescriptor
