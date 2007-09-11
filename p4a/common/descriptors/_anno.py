@@ -3,7 +3,7 @@ try:
     from zope.annotation import interfaces as annointerfaces
 except ImportError, e:
     # zope 2.9/3.2 support
-    from zope.app.annotation import interfaces as annointerfaces
+    from zope.annotation import interfaces as annointerfaces
 
 _marker = object()
 
