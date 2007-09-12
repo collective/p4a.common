@@ -39,6 +39,7 @@ class ATSchemaFieldDescriptor(property):
         self.ensure_unicode = uni
 
     def _decode(self, v):
+        v = v or u''
         if not isinstance(v, unicode) and self.ensure_unicode:
             v = unicode(v, 'utf-8')
         return v
