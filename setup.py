@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import sys, os
 
-version = '0.1'
+version = '1.0'
 
 setup(name='p4a.common',
       version=version,
@@ -23,7 +23,6 @@ setup(name='p4a.common',
       include_package_data=True,
       zip_safe=True,
       install_requires=[
-          # -*- Extra requirements: -*-
       ],
       entry_points="""
       # -*- Entry points: -*-
