@@ -42,6 +42,8 @@ def activate(obj, possibleiface, enhancediface):
     _set_activation(obj, possibleiface, enhancediface, True)
 
 def deactivate(obj, possibleiface, enhancediface):
+    if getattr(obj.context, 'layout', None) is not None:
+        delattr(obj.context, 'layout')
     _set_activation(obj, possibleiface, enhancediface, False)
 
 _marker = object()
