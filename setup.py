@@ -21,7 +21,7 @@ setup(name='p4a.common',
       packages=find_packages(exclude=['ez_setup']),
       namespace_packages=['p4a'],
       include_package_data=True,
-      zip_safe=True,
+      zip_safe=False,
       install_requires=[
       ],
       entry_points="""
