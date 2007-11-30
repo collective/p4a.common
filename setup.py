@@ -23,6 +23,7 @@ setup(name='p4a.common',
       include_package_data=True,
       zip_safe=False,
       install_requires=[
+          "setuptools",
       ],
       entry_points="""
       # -*- Entry points: -*-
