@@ -2,6 +2,16 @@
 p4a.common Changes
 ==================
 
+p4a.common 1.1 (unreleased)
+===========================
+
+Features
+--------
+
+  * Added formlib rich text widget (for plone only) that wraps standard plone
+    rich text widget (which by default is kupu)
+    (Rocky Burt)
+
 p4a.common 1.0 (2007-10-14)
 ===========================
 
