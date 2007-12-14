@@ -2,6 +2,7 @@
     xmlns="http://namespaces.zope.org/zope"
     xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:five="http://namespaces.zope.org/five"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
     i18n_domain="Plone4Artists">
 
   <browser:menu
@@ -16,6 +17,22 @@
     </class>
 
     <five:localsite class=".Portal.PloneSite" />
+  </configure>
+
+  <configure zcml:condition="installed Products.Archetypes">
+    <browser:page
+        name="p4a_common_testeditfields.html"
+        class=".at.TestEditFieldsView"
+        permission="zope.Public"
+        for="*"
+        />
+
+    <browser:page
+        name="p4a_common_testdisplayfields.html"
+        class=".at.TestDisplayFieldsView"
+        permission="zope.Public"
+        for="*"
+        />
   </configure>
 
 </configure>

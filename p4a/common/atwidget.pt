@@ -1,0 +1,19 @@
+<div tal:define="content_context view/content_context;
+                 context nocall:content_context;
+                 pu nocall:context/portal_url;
+                 portal_url context/portal_url;
+                 portal pu/getPortalObject;
+                 errors python:{};
+                 widgets python:content_context.archetype_tool.getWidgets(fields=['body'], mode='edit', context=content_context, package='Archetypes', type='DDocument')">
+<style>
+.widget .field LABEL,
+.widget .field .fieldRequired,
+.kupuoverride,
+.fieldTextFormat {
+  display: none;
+}
+</style>
+  <tal:fields repeat="widget widgets">
+    <metal:fieldMacro use-macro="widget" />
+  </tal:fields>
+</div>
