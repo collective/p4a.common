@@ -46,8 +46,8 @@ class AnnotationDescriptor(property):
         default = getattr(self.field, 'default', _marker)
 
         d = anno.get(self.anno_key, _marker)
-        if d == _marker:
-            if default == _marker:
+        if d is _marker:
+            if default is _marker:
                 raise AttributeError(name)
             return default
 
