@@ -2,8 +2,8 @@
 p4a.common Changes
 ==================
 
-p4a.common 1.1 (unreleased)
-===========================
+p4a.common 1.0.1 (2008-02-13)
+=============================
 
 Features
 --------
@@ -11,6 +11,14 @@ Features
   * Added formlib rich text widget (for plone only) that wraps standard plone
     rich text widget (which by default is kupu)
     (Rocky Burt)
+
+  * Installs properly on Plone 3
+    (Rocky Burt)
+
+Bugs
+----
+
+  * Egg is no longer considered zip_safe (nor should it have been)
 
 p4a.common 1.0 (2007-10-14)
 ===========================
