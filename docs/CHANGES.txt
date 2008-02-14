@@ -16,6 +16,7 @@ Features
     (Rocky Burt)
     
   * A new module, dtutils contains converters between datetime and DateTime.
+    (Lennart Regebro)
 
 Bugs
 ----
