@@ -15,6 +15,9 @@ Features
   * Installs properly on Plone 3
     (Rocky Burt)
 
+  * A new module, dtutils contains converters between datetime and DateTime.
+   (Lennart Regebro)
+
 Bugs
 ----
 
