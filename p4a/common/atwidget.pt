@@ -3,6 +3,9 @@
                  pu nocall:context/portal_url;
                  portal_url context/portal_url;
                  portal pu/getPortalObject;
+                 tabindex python:{'next': None};
+                 mtool portal/portal_membership;
+                 member mtool/getAuthenticatedMember;
                  errors python:{};
                  widgets python:content_context.archetype_tool.getWidgets(fields=['body'], mode='edit', package='Archetypes', type='DDocument')">
 <style>
