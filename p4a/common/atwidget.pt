@@ -17,6 +17,7 @@
 }
 </style>
   <tal:fields repeat="widget widgets" tal:define="kupu_base_override portal_url">
+    <tal:mimetype tal:define="dummy python:widget._args['field'].setContentType(widget._args['instance'], 'text/html')" />
     <metal:fieldMacro use-macro="widget" />
   </tal:fields>
 
