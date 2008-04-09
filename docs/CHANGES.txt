@@ -2,6 +2,19 @@
 p4a.common Changes
 ==================
 
+p4a.common 1.0.2 (2008-04-09)
+=============================
+
+Bug Fixes
+---------
+
+  * Fixed problem where rich widget wasn't working on Plone 2.5 (Rocky Burt)
+
+  * Various cleanups of rich widget (Tim Terlegard)
+
+  * Minor documentation fixes (Lennart Regebro)
+
+
 p4a.common 1.0.1 (2008-02-13)
 =============================
 
@@ -14,7 +27,7 @@ Features
 
   * Installs properly on Plone 3
     (Rocky Burt)
-    
+
   * A new module, dtutils contains converters between datetime and DateTime.
     (Lennart Regebro)
 
