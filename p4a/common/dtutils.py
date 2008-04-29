@@ -9,7 +9,7 @@ Doublecheck conversions:
     >>> dt == dt2DT(DT2dt(dt))
     True
 
-    >>> dt = datetime.datetime(2005, 07, 07, 18, 00, 00, tzinfo=tz)
+    >>> dt = datetime.datetime(2005, 07, 07, 18, 00, 00, tzinfo=brt)
     >>> dt == DT2dt(dt2DT(dt))
     True
 
@@ -18,23 +18,23 @@ Doublecheck conversions:
 import datetime
 from DateTime import DateTime
 try:
-    import dateutil
+    from dateutil import tz
 except ImportError:
     # To make Calendaring patch in dateutils:
     import Products.Calendaring
-    import dateutil
+    from dateutil import tz
 
 def gettz(name=None):
     try:
         return _extra_times[name]
     except KeyError:
-        return dateutil.tz.gettz(name)
+        return tz.gettz(name)
 
 def dt2DT(dt, tzname=None):
     """Convert a python datetime to DateTime. 
 
     >>> import time, os
-    >>> oldtz = os.environ['TZ']
+    >>> oldtz = os.environ.get('TZ')
     >>> os.environ['TZ'] = 'Brazil/East'
     >>> time.tzset()
     >>> brt = gettz('Brazil/East')
@@ -65,20 +65,23 @@ def dt2DT(dt, tzname=None):
     DateTime('2005/07/07 18:00:00 GMT-3')
     
     Change back:
-    >>> os.environ['TZ'] = oldtz
+    >>> if oldtz is None:
+    ...     del os.environ['TZ']
+    ... else:
+    ...     os.environ['TZ'] = oldtz
     >>> time.tzset()    
 
     """
     if tzname is None and dt.tzinfo is None:
         # Assume local time
-        tz = gettz()
+        timezone = gettz()
     elif tzname is not None:
         # Convert to timezone
-        tz = gettz(tzname)
+        timezone = gettz(tzname)
     else:
-        tz = None
-    if tz is not None:
-        dt = dt.replace(tzinfo=tz)
+        timezone = None
+    if timezone is not None:
+        dt = dt.replace(tzinfo=timezone)
     return DateTime(dt.isoformat())
 
 def DT2dt(dt):
@@ -114,15 +117,15 @@ def DT2dt(dt):
     >>> dt.astimezone(gettz('UTC'))
     datetime.datetime(2005, 7, 7, 21, 0, tzinfo=tzfile('/usr/share/zoneinfo/UTC'))
     """
-    tz = gettz(dt.timezone())
+    timezone = gettz(dt.timezone())
     value = datetime.datetime(dt.year(), dt.month(), dt.day(),
                               dt.hour(), dt.minute(), int(dt.second()),
-                              int(dt.second()*1000000) % 1000000, tzinfo=tz)
+                              int(dt.second()*1000000) % 1000000, tzinfo=timezone)
     return value
 
 _extra_times = {}
 for x in range(-12, 0) + range(1, 13):
     for n in ('GMT', 'UTC'):
         name = '%s%+i' % (n, x)
-        tz = dateutil.tz.tzoffset(name, x*3600)
-        _extra_times[name] = tz
+        timezone = tz.tzoffset(name, x*3600)
+        _extra_times[name] = timezone

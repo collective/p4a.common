@@ -12,6 +12,8 @@ def test_suite():
                              optionflags=doctest.ELLIPSIS),
         doctest.DocTestSuite('p4a.common.descriptors._at',
                              optionflags=doctest.ELLIPSIS),
+        doctest.DocTestSuite('p4a.common.dtutils',
+                             optionflags=doctest.ELLIPSIS),
         ))
 
 if __name__ == "__main__":
