@@ -2,6 +2,15 @@
 p4a.common Changes
 ==================
 
+p4a.common 1.0.3 (unreleased)
+=============================
+
+Bug Fixes
+---------
+
+  * Import problems with dateutil.tz fixed.
+
+
 p4a.common 1.0.2 (2008-04-09)
 =============================
 
