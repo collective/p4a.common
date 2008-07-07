@@ -2,7 +2,7 @@
 p4a.common Changes
 ==================
 
-p4a.common 1.0.3 (unreleased)
+p4a.common 1.0.3 (2008-07-07)
 =============================
 
 Bug Fixes
