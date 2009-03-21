@@ -99,19 +99,19 @@ def fancy_date_interval(start, end=None):
             return u'Today'
         if same_day(start, datetime.today() - ONE_DAY):
             return u'Yesterday'
-        return u'%s %s%s, %s' % (start.strftime("%b"),
+        return u'%s %s%s, %s' % (unicode(start.strftime("%b"),"utf-8"),
                                  start.day,
                                  day_suffix(start.day),
                                  start.year)
     elif same_month(start, end):
-        return u'%s %s%s-%s%s, %s' % (start.strftime("%b"),
+        return u'%s %s%s-%s%s, %s' % (unicode(start.strftime("%b"),"utf-8"),
                                       start.day,
                                       day_suffix(start.day),
                                       end.day,
                                       day_suffix(end.day),
                                       start.year)
     else:
-        return u'%s %s%s-%s %s%s, %s' % (start.strftime("%b"),
+        return u'%s %s%s-%s %s%s, %s' % (unicode(start.strftime("%b"),"utf-8"),
                                          start.day,
                                          day_suffix(start.day),
                                          end.strftime("%b"),
