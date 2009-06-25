@@ -2,6 +2,12 @@
 p4a.common Changes
 ==================
 
+p4a.common 1.0.5 (2009-06-25)
+=============================
+
+  * Made python-dateutil a requirement. (regebro)
+  
+
 p4a.common 1.0.4 (2009-05-17)
 =============================
 

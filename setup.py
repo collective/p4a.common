@@ -24,6 +24,7 @@ setup(name='p4a.common',
       zip_safe=False,
       install_requires=[
           "setuptools",
+          "python-dateutil",
       ],
       entry_points="""
       # -*- Entry points: -*-
