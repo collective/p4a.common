@@ -1,4 +1,3 @@
-from zope.component.interfaces import ISiteManager
 from zope.app.component.hooks import setSite
 from zope.app.component.interfaces import ISite, IPossibleSite
 from Products.Five.site.localsite import enableLocalSiteHook
