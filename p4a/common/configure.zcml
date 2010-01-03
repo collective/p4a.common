@@ -13,7 +13,7 @@
   <configure package="Products.CMFPlone">
     <class
         class=".Portal.PloneSite">
-      <implements interface="zope.app.component.interfaces.IPossibleSite" />
+      <implements interface="zope.location.interfaces.IPossibleSite" />
     </class>
 
     <five:localsite class=".Portal.PloneSite" />
