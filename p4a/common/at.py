@@ -5,9 +5,6 @@ from zope.app.form.browser.textwidgets import TextAreaWidget
 from Products.Five.formlib.formbase import PageDisplayForm, PageForm
 from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from Products.CMFCore import utils as cmfutils
-from Products.Archetypes import Field, Widget
-from Products.ATContentTypes.content import document
 
 class RichTextEditWidget(BrowserView, TextAreaWidget):
     """A Zope 3 based formlib widget that exposes whatever rich text

@@ -15,7 +15,7 @@
   as far as i know, since plone3 a PloneSite is a local site respectively a
   site manager and can persist local utilities
   -->
-  <configure package="Products.CMFPlone">
+  <configure package="Products.CMFPlone" zcml:condition="not-installed plone.app.upgrade">
     <class
         class=".Portal.PloneSite">
       <implements interface="zope.location.interfaces.IPossibleSite" />
