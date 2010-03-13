@@ -1,63 +1,49 @@
-==================
-p4a.common Changes
-==================
-
-p4a.common 1.0.5 (2009-06-25)
-=============================
-
-  * Made python-dateutil a requirement. (regebro)
-  
-
-p4a.common 1.0.4 (2009-05-17)
-=============================
-
-  * Solved Unicode problems (hpeter)
-  
-
-p4a.common 1.0.3 (2008-07-07)
-=============================
-
-Bug Fixes
----------
-
-  * Import problems with dateutil.tz fixed.
+Changelog
+=========
 
 
-p4a.common 1.0.2 (2008-04-09)
-=============================
+1.0.5 (2009-06-25)
+------------------
 
-Bug Fixes
----------
-
-  * Fixed problem where rich widget wasn't working on Plone 2.5 (Rocky Burt)
-
-  * Various cleanups of rich widget (Tim Terlegard)
-
-  * Minor documentation fixes (Lennart Regebro)
+- Made python-dateutil a requirement. [regebro]
 
 
-p4a.common 1.0.1 (2008-02-13)
-=============================
+1.0.4 (2009-05-17)
+------------------
 
-Features
---------
+- Solved Unicode problems [hpeter]
 
-  * Added formlib rich text widget (for plone only) that wraps standard plone
-    rich text widget (which by default is kupu)
-    (Rocky Burt)
 
-  * Installs properly on Plone 3
-    (Rocky Burt)
+1.0.3 (2008-07-07)
+------------------
 
-  * A new module, dtutils contains converters between datetime and DateTime.
-    (Lennart Regebro)
+- Import problems with dateutil.tz fixed.
 
-Bugs
-----
 
-  * Egg is no longer considered zip_safe (nor should it have been)
+1.0.2 (2008-04-09)
+------------------
 
-p4a.common 1.0 (2007-10-14)
-===========================
+- Fixed problem where rich widget wasn't working on Plone 2.5 [Rocky Burt]
 
-* First public release
+- Various cleanups of rich widget [Tim Terlegard]
+
+- Minor documentation fixes [Lennart Regebro]
+
+
+1.0.1 (2008-02-13)
+------------------
+
+- Added formlib rich text widget (for plone only) that wraps standard plone
+  rich text widget (which by default is kupu) [Rocky Burt]
+
+- Installs properly on Plone 3 [Rocky Burt]
+
+- A new module, dtutils contains converters between datetime and DateTime.
+  [Lennart Regebro]
+
+- Egg is no longer considered zip_safe (nor should it have been)
+
+1.0 (2007-10-14)
+----------------
+
+- First public release
