@@ -1,11 +1,15 @@
 from setuptools import setup, find_packages
 
+f = open('CHANGES.txt')
+changes = f.read()
+f.close()
+
 version = '1.0.5'
 
 setup(name='p4a.common',
       version=version,
       description="Reusable code-bits for Zope 3 and Plone",
-      long_description="""""",
+      long_description=changes,
       classifiers=[
         "Framework :: Zope2",
         "Framework :: Zope3",
