@@ -2,6 +2,7 @@ from zope.app.component.hooks import setSite
 from zope.app.component.interfaces import ISite, IPossibleSite
 from Products.Five.site.localsite import enableLocalSiteHook
 
+
 def ensure_site(context):
     """Ensure the given context implements ISite.  The importance of
     this method is that it will ensure the given context is an ISite

@@ -12,6 +12,7 @@ try:
 except ImportError, err:
     HAS_FLSM = False
 
+
 class MockSite:
     """A simple ISite/ISiteManager combo for testing purposes.
     """

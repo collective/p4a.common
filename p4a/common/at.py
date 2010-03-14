@@ -6,6 +6,7 @@ from Products.Five.formlib.formbase import PageDisplayForm, PageForm
 from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
+
 class RichTextEditWidget(BrowserView, TextAreaWidget):
     """A Zope 3 based formlib widget that exposes whatever rich text
     editor is configured inside Plone.
@@ -56,6 +57,7 @@ form_fields = form.FormFields(
                 required=False),
     )
 
+
 class TestEditFieldsView(PageForm):
     """
     """
@@ -67,6 +69,7 @@ class TestEditFieldsView(PageForm):
     @form.action('Save')
     def handle_save_action(self, action, data):
         pass
+
 
 class TestDisplayFieldsView(PageDisplayForm):
     """

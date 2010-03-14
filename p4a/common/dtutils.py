@@ -19,14 +19,16 @@ import datetime
 from DateTime import DateTime
 from dateutil import tz
 
+
 def gettz(name=None):
     try:
         return _extra_times[name]
     except KeyError:
         return tz.gettz(name)
 
+
 def dt2DT(dt, tzname=None):
-    """Convert a python datetime to DateTime. 
+    """Convert a python datetime to DateTime.
 
     >>> import time, os
     >>> oldtz = os.environ.get('TZ')
@@ -58,13 +60,13 @@ def dt2DT(dt, tzname=None):
 
     >>> dt2DT(datetime.datetime(2005, 07, 07, 18, 0, 0, tzinfo=brt))
     DateTime('2005/07/07 18:00:00 GMT-3')
-    
+
     Change back:
     >>> if oldtz is None:
     ...     del os.environ['TZ']
     ... else:
     ...     os.environ['TZ'] = oldtz
-    >>> time.tzset()    
+    >>> time.tzset()
 
     """
     if tzname is None and dt.tzinfo is None:
@@ -78,6 +80,7 @@ def dt2DT(dt, tzname=None):
     if timezone is not None:
         dt = dt.replace(tzinfo=timezone)
     return DateTime(dt.isoformat())
+
 
 def DT2dt(dt):
     """Convert a DateTime to python's datetime in UTC.

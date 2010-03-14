@@ -3,6 +3,7 @@ from datetime import timedelta
 
 ONE_DAY = timedelta(days=1)
 
+
 def day_suffix(day):
     """
     Return correct English suffix (i.e. 'st', 'nd' etc.)
@@ -22,6 +23,7 @@ def day_suffix(day):
         return u'th'
     else:
         return [u'st', u'nd', u'rd'][day % 10 - 1]
+
 
 def same_day(*dates):
     """Return True if and only if each date in *dates represents the exact
@@ -45,6 +47,7 @@ def same_day(*dates):
             return False
 
     return True
+
 
 def same_month(*dates):
     """Return True if and only if each date in *dates represents the exact
@@ -70,6 +73,7 @@ def same_month(*dates):
             return False
 
     return True
+
 
 def fancy_date_interval(start, end=None):
     """
@@ -99,25 +103,26 @@ def fancy_date_interval(start, end=None):
             return u'Today'
         if same_day(start, datetime.today() - ONE_DAY):
             return u'Yesterday'
-        return u'%s %s%s, %s' % (unicode(start.strftime("%b"),"utf-8"),
+        return u'%s %s%s, %s' % (unicode(start.strftime("%b"), "utf-8"),
                                  start.day,
                                  day_suffix(start.day),
                                  start.year)
     elif same_month(start, end):
-        return u'%s %s%s-%s%s, %s' % (unicode(start.strftime("%b"),"utf-8"),
+        return u'%s %s%s-%s%s, %s' % (unicode(start.strftime("%b"), "utf-8"),
                                       start.day,
                                       day_suffix(start.day),
                                       end.day,
                                       day_suffix(end.day),
                                       start.year)
     else:
-        return u'%s %s%s-%s %s%s, %s' % (unicode(start.strftime("%b"),"utf-8"),
+        return u'%s %s%s-%s %s%s, %s' % (unicode(start.strftime("%b"), "utf-8"),
                                          start.day,
                                          day_suffix(start.day),
                                          end.strftime("%b"),
                                          end.day,
                                          day_suffix(end.day),
                                          start.year)
+
 
 def fancy_time_amount(v, show_legend=True):
     """Produce a friendly representation of the given time amount.  The
@@ -145,7 +150,7 @@ def fancy_time_amount(v, show_legend=True):
 
     if hours > 0:
         val = u'%02i:%02i:%02i' % (hours, mins, secs)
-        legend =  u' (hh:mm:ss)'
+        legend = u' (hh:mm:ss)'
     else:
         val = u'%02i:%02i' % (mins, secs)
         legend = u' (mm:ss)'
@@ -157,44 +162,47 @@ def fancy_time_amount(v, show_legend=True):
 
     return full
 
+
 def fancy_data_size(v):
     """Produce a friendly reprsentation of the given value.  The value
     Is expected to be in bytes as an int or long.
-    
+
       >>> fancy_data_size(54)
       u'54 B'
-      
+
       >>> fancy_data_size(37932)
       u'37.0 KB'
 
       >>> fancy_data_size(1237932)
       u'1.2 MB'
-    
+
       >>> fancy_data_size(2911237932)
       u'2.7 GB'
     """
-    
+
     suffix = 'B'
-    
+
     format = u'%i %s'
     if v > 1024:
         suffix = 'KB'
         v = float(v) / 1024.0
         format = u'%.1f %s'
-    
+
     if v > 1024:
         suffix = 'MB'
         v = v / 1024.0
-    
+
     if v > 1024:
         suffix = 'GB'
         v = v / 1024.0
 
     return format % (v, suffix)
 
+
 def _test():
     import doctest
     doctest.testmod()
-    
+
+
 if __name__ == "__main__":
     _test()

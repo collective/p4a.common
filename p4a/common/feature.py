@@ -4,9 +4,11 @@ from p4a.common import interfaces
 
 _marker = object()
 
+
 class ActivationException(Exception):
     """Any exception related to activating or deactivating a feature.
     """
+
 
 def _set_activation(obj, possibleiface, enhancediface, activation):
     """Try to set the feature activation on the given object.
@@ -21,7 +23,7 @@ def _set_activation(obj, possibleiface, enhancediface, activation):
 
     if not possibleiface.providedBy(obj):
         raise ActivationException('The object denoted by %r does not '
-                                  'provide the %r interface' 
+                                  'provide the %r interface'
                                   % (repr(obj), repr(possibleiface)))
 
     if not activation and enhancediface.implementedBy(obj.__class__):
@@ -38,8 +40,10 @@ def _set_activation(obj, possibleiface, enhancediface, activation):
         interface.directlyProvides(obj, ifaces - enhancediface)
         event.notify(interfaces.FeatureDeactivatedEvent(enhancediface, obj))
 
+
 def activate(obj, possibleiface, enhancediface):
     _set_activation(obj, possibleiface, enhancediface, True)
+
 
 def deactivate(obj, possibleiface, enhancediface):
     if getattr(obj.context, 'layout', None) is not None:
@@ -47,6 +51,7 @@ def deactivate(obj, possibleiface, enhancediface):
     _set_activation(obj, possibleiface, enhancediface, False)
 
 _marker = object()
+
 
 class FeatureProperty(object):
     """Allows you to get and set the *feature* on the given object.
@@ -64,14 +69,14 @@ class FeatureProperty(object):
         obj = inst
         if self.__attrname:
             obj = getattr(inst, self.__attrname)
-    
+
         return self.__enhancediface.providedBy(obj)
 
     def __set__(self, inst, value):
         obj = inst
         if self.__attrname:
             obj = getattr(inst, self.__attrname)
-        
+
         if value:
             activate(obj, self.__possibleiface, self.__enhancediface)
         else:

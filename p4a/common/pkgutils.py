@@ -1,5 +1,6 @@
 import os
 
+
 def package_dirs(pkg_name):
     """Return the physical filesystem directory (if possible) of the given
     package.
@@ -29,6 +30,7 @@ def package_dirs(pkg_name):
         pkg = __import__(pkg_name, globals(), locals(), pkg_name)
 
     return tuple(getattr(pkg, '__path__', ()))
+
 
 def find_dir(pkg_name, dirname='.'):
     """Return an absolute path to a directory if one can be found, or None
@@ -66,6 +68,6 @@ def find_dir(pkg_name, dirname='.'):
     for x in package_dirs(pkg_name):
         res = find(x)
         if res:
-             return res
+            return res
 
     return None

@@ -7,6 +7,7 @@ except ImportError, err:
 
 _marker = object()
 
+
 class AnnotationDescriptor(property):
     """A descriptor for accessing annotated fields.
 
