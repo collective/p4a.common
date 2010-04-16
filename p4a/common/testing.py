@@ -1,6 +1,11 @@
 from zope import interface
-from zope.component.interfaces import ISiteManager
 from zope.app.component.interfaces import ISite
+
+try:
+    from zope.component.interfaces import IComponentLookup
+except ImportError:
+    # BBB
+    from zope.component.interfaces import ISiteManager as IComponentLookup
 
 import logging
 logger = logging.getLogger('p4a.common.testing')
@@ -17,7 +22,7 @@ class MockSite:
     """A simple ISite/ISiteManager combo for testing purposes.
     """
 
-    interface.implements(ISite, ISiteManager)
+    interface.implements(ISite, IComponentLookup)
 
     def __init__(self):
         self.utils = {}

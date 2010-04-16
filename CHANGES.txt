@@ -4,8 +4,11 @@ Changelog
 
 unreleased (xxxx-xx-xx)
 -----------------------
-- No changes yet
 
+- Added BBB import for ISiteManager (now IComponentLookup). [davisagli]
+
+- No longer take responsibility for enabling a local site in Zope 2.12;
+  Plone does this for us via five.localsitemanager now. [davisagli]
 
 1.0.5 (2009-06-25)
 ------------------

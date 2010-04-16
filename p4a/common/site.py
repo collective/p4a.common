@@ -1,6 +1,10 @@
 from zope.app.component.hooks import setSite
 from zope.app.component.interfaces import ISite, IPossibleSite
-from Products.Five.site.localsite import enableLocalSiteHook
+try:
+    # BBB for Five < 1.5
+    from Products.Five.site.localsite import enableLocalSiteHook
+except ImportError:
+    enableLocalSiteHook = None
 
 
 def ensure_site(context):
@@ -22,10 +26,13 @@ def ensure_site(context):
       >>> ISite.providedBy(om)
       False
 
-      >>> ensure_site(om)
-      >>> ISite.providedBy(om)
+      >>> try:
+      ...     ensure_site(om)
+      ... except TypeError:
+      ...     # not supposed to do anything unless enableLocalSiteHook was found
+      ...     if enableLocalSiteHook is None:
+      ...         True
       True
-
     """
 
     if not IPossibleSite.providedBy(context):
@@ -41,8 +48,12 @@ def ensure_site(context):
         raise TypeError('The object, "%s", is not an IPossibleSite' % p)
 
     if not ISite.providedBy(context):
-        enableLocalSiteHook(context)
-        setSite(context)
+        if enableLocalSiteHook is not None:
+            enableLocalSiteHook(context)
+            setSite(context)
+        else:
+            raise TypeError('"%s" is not configured as an ISite' %
+                            '/'.join(context.getPhysicalPath()))
 
     if not ISite.providedBy(context):
         raise TypeError('Somehow trying to configure "%s" as an ISite '
