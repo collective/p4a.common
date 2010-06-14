@@ -10,11 +10,6 @@
       title="Plone Content Drop-Down Menu"
       />
 
-  <!-- five:localsite is deprecated and was removed with Zope2.12.
-  so p4a.common does not work for plone4 yet.
-  as far as i know, since plone3 a PloneSite is a local site respectively a
-  site manager and can persist local utilities
-  -->
   <configure package="Products.CMFPlone" zcml:condition="not-installed plone.app.upgrade">
     <class
         class=".Portal.PloneSite">
