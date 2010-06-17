@@ -13,7 +13,7 @@
   <configure package="Products.CMFPlone" zcml:condition="not-installed plone.app.upgrade">
     <class
         class=".Portal.PloneSite">
-      <implements interface="zope.location.interfaces.IPossibleSite" />
+      <implements interface="zope.app.component.interfaces.IPossibleSite" />
     </class>
 
     <five:localsite class=".Portal.PloneSite" />
