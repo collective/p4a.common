@@ -4,7 +4,7 @@ f = open('CHANGES.txt')
 changes = f.read()
 f.close()
 
-version = '1.0.7dev'
+version = '1.0.7'
 
 setup(name='p4a.common',
       version=version,
