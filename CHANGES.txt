@@ -1,9 +1,11 @@
 Changelog
 =========
 
-1.0.8 (XXXX-XX-XX)
+1.0.8 (2011-04-19)
 ------------------
 
+- test for correct import of PageForm in Plone 4.1
+  [redcor]
 
 1.0.7 (2010-06-17)
 ------------------
