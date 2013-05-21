@@ -1,5 +1,12 @@
-from zope.app.component.hooks import setSite
-from zope.app.component.interfaces import ISite, IPossibleSite
+from zope.location.interfaces import ISite, IPossibleSite
+
+try:
+    # Plone < 4.3
+    from zope.app.component.hooks import setSite
+except ImportError:
+    # Plone >= 4.3
+    from zope.component.hooks import setSite  # NOQA from zope.app.component.interfaces import ISite, IPossibleSite
+    
 try:
     # BBB for Five < 1.5
     from Products.Five.site.localsite import enableLocalSiteHook
