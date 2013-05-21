@@ -5,7 +5,7 @@ try:
     from zope.app.component.hooks import setSite
 except ImportError:
     # Plone >= 4.3
-    from zope.component.hooks import setSite  # NOQA from zope.app.component.interfaces import ISite, IPossibleSite
+    from zope.component.hooks import setSite
     
 try:
     # BBB for Five < 1.5
@@ -20,7 +20,7 @@ def ensure_site(context):
     regardless of the Zope version (Zope 2.9 had a really hacked up
     SiteManager mechanism we have to account for).
 
-      >>> from zope.app.component.interfaces import ISite, IPossibleSite
+      >>> from zope.location.interfaces import ISite, IPossibleSite
       >>> from OFS.Folder import Folder
       >>> if not IPossibleSite.implementedBy(Folder):
       ...    from zope import interface

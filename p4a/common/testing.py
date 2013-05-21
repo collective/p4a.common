@@ -1,5 +1,5 @@
 from zope import interface
-from zope.app.component.interfaces import ISite
+from zope.location.interfaces import ISite
 
 try:
     from zope.component.interfaces import IComponentLookup
